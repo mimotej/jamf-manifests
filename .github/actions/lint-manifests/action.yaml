@@ -1,0 +1,10 @@
+---
+name: Lint YAML files
+runs:
+  using: 'composite'
+  steps:
+    - name: 'Yamllint'
+      uses: karancode/yamllint-github-action@master
+      with:
+        yamllint_strict: false
+        yamllint_comment: false

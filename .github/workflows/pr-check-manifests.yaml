@@ -1,0 +1,28 @@
+---
+name: Check manifests on PR
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Lint YAML
+        uses: ./.github/actions/lint-manifests
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: '0'
+      - name: Install kustomize
+        uses: yokawasa/action-setup-kube-tools@v0.9.2
+        with:
+          setup-tools: |
+            kustomize
+          kustomize: '5.4.3'
+      - name: Build using kustomize
+        uses: ./.github/actions/build-kustomize

@@ -1,0 +1,16 @@
+---
+name: Run kustomize build on changed paths in the PR
+runs:
+  using: "composite"
+  steps:
+    - name: Build on changed paths
+      shell: bash
+      run: |
+        echo "Check only following shas ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
+        DIRS=$(git diff --name-status ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | grep -Po "^[^DR]\s+\K.*?(?=/)|^R\w*\s+.*\s+\K.*?(?=/)" | sort | uniq)
+        MUST_INCLUDE=".*kustomization.yaml"
+        KUSTOMIZED=$(for i in $(echo "$DIRS"); do find $i -regex "$MUST_INCLUDE"; done)
+        for DIR in $KUSTOMIZED; do
+          echo "Working on directory $(dirname $DIR)"
+          kustomize build --enable-alpha-plugins --enable-helm $(dirname $kustomized)
+        done
