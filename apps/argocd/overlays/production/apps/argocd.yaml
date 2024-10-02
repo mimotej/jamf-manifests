@@ -9,7 +9,7 @@ spec:
     name: production
   project: default
   source:
-    path: apps/argocd/overlays/production/apps
+    path: apps/argocd/overlays/production
     repoURL: https://github.com/mimotej/jamf-manifests.git
     targetRevision: HEAD
   syncPolicy:
