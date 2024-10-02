@@ -12,5 +12,5 @@ runs:
         KUSTOMIZED=$(for i in $(echo "$DIRS"); do find $i -regex "$MUST_INCLUDE"; done)
         for DIR in $KUSTOMIZED; do
           echo "Working on directory $(dirname $DIR)"
-          kustomize build --enable-alpha-plugins --enable-helm $(dirname $kustomized)
+          kustomize build --enable-alpha-plugins --enable-helm $(dirname $DIR)
         done

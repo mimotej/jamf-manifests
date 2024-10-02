@@ -1,0 +1,18 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+spec:
+  destination:
+    namespace: argocd
+    name: argocd
+  project: default
+  source:
+    path: apps/argocd/overlays/production/apps
+    repoURL: https://github.com/mimotej/jamf-manifests.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - Validate=false
+      - ApplyOutOfSyncOnly=true
