@@ -1,6 +1,10 @@
 ---
 extends: default
 
+ignore: |
+  - apps/go-jamf/templates/
+
+
 rules:
   line-length: disable
   truthy:

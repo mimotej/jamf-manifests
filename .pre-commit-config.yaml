@@ -14,6 +14,11 @@ repos:
       - id: check-added-large-files
       - id: check-case-conflict
       - id: detect-private-key
-
       - id: check-yaml
         args: [--allow-multiple-documents]
+        exclude: apps/go-jamf/templates/ # handled by helmlint
+
+  - repo: https://github.com/gruntwork-io/pre-commit
+    rev: v0.1.23
+    hooks:
+      - id: helmlint
