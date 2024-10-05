@@ -14,7 +14,7 @@ spec:
     targetRevision: HEAD
     helm:
       valueFiles:
-        - apps/go-jamf/values-dev.yaml
+        - values-dev.yaml
   syncPolicy:
     syncOptions:
       - Validate=false
