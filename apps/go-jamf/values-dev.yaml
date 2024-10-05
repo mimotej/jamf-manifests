@@ -16,10 +16,8 @@ ingress:
   enabled: true
   className: nginx
   pathType: Prefix
-  hosts:
-    - host: go-jamf-dev.internal
-      paths:
-        - path: /
+  host: go-jamf-dev.internal
+  path: /
   #tls:
   #  - secretName: go-jamf-tls
   #    hosts:

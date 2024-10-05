@@ -16,7 +16,8 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ .Chart.Name }}
+        app: {{ include "go-jamf.name" . }}
+        app.kubernetes.io/instance: {{ .Values.env.instance }}
     spec:
       containers:
         - name: {{ .Chart.Name }}
