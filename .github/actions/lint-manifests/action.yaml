@@ -8,3 +8,8 @@ runs:
       with:
         yamllint_strict: false
         yamllint_comment: false
+    - name: Lint Helm charts
+      uses: helm/chart-testing-action@v2.6.1
+      with:
+        command: lint
+        config: ct.yaml
