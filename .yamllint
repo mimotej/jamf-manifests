@@ -1,9 +1,8 @@
 ---
 extends: default
 
-ignore: |
-  - apps/go-jamf/templates/
-
+ignore:
+  - apps/go-jamf/
 
 rules:
   line-length: disable
