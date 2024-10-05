@@ -2,16 +2,14 @@
 replicaCount: 1
 image:
   repository: mimotej/go-jamf
-  tag: "pr-2-6f56f6dbc9faa8549c404c4a4a8ed2e527038f60"
+  tag: "pr-5-latest"
 namespace: go-jamf-dev
 nameOverride: ""
-
 service:
   name: http
   type: ClusterIP
   port: 80
   targetPort: 8080
-
 ingress:
   enabled: true
   className: nginx
