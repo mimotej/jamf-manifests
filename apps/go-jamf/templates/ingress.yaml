@@ -17,7 +17,7 @@ spec:
               service:
                 name: {{ include "go-jamf.name" . }}-service
                 port:
-                  name: {{ .Values.service.name }}
+                  number: {{ .Values.service.port }}
   {{- with .Values.ingress.tls }}
   tls:
     {{- toYaml . | nindent 4 }}
