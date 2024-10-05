@@ -6,9 +6,7 @@ metadata:
   namespace: {{ .Values.namespace }}
 spec:
   selector:
-    matchLabels:
-      app: {{ include "go-jamf.name" . }}
-      app.kubernetes.io/instance: {{ .Values.env.name}}
+    app.kubernetes.io/instance: {{ .Values.env.instance }}
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}

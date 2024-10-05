@@ -26,3 +26,4 @@ ingress:
   #      - go-jamf-dev.internal
 env:
   name: dev
+  instance: go-jamf-dev
