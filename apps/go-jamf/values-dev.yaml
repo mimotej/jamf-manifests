@@ -7,6 +7,7 @@ namespace: go-jamf-dev
 nameOverride: ""
 
 service:
+  name: http
   type: ClusterIP
   port: 80
   targetPort: 8080
