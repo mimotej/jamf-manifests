@@ -1,0 +1,17 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-scope
+spec:
+  destination:
+    name: production
+  project: default
+  source:
+    path: cluster-scope/overlays/production
+    repoURL: https://github.com/mimotej/jamf-manifests.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+      - Validate=false
+      - ApplyOutOfSyncOnly=true

@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: go-jamf-prod
+spec:
+  destination:
+    namespace: go-jamf-prod
+    name: production
+  project: default
+  source:
+    path: apps/go-jamf
+    repoURL: https://github.com/mimotej/jamf-manifests.git
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+        - apps/go-jamf/values.yaml
+  syncPolicy:
+    syncOptions:
+      - Validate=false
+      - ApplyOutOfSyncOnly=true

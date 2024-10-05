@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "go-jamf.name" . }}
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: {{ include "go-jamf.name" . }}
+    app.kubernetes.io/instance: {{ .Values.env.name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ include "go-jamf.name" . }}
+      app.kubernetes.io/instance: {{ .Values.env.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: {{ .Values.service.port }}
+              containerPort: {{ .Values.service.targetPort }}

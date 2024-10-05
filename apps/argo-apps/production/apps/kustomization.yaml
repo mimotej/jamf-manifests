@@ -4,3 +4,6 @@ kind: Kustomization
 namespace: argocd
 resources:
   - argocd.yaml
+  - cluster-scope.yaml
+  - go-jamf-dev.yaml
+  - go-jamf-prod.yaml
