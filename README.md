@@ -31,3 +31,7 @@ Manifests are split into two parts `apps` and `cluster-scope`:
 ### Local deployment
 
 These manifests should be deployable in any type of Kubernetes cluster, only requirement is nginx ingress controller, which can be setup either as an addon with minikube or can be installed using helm-charts/additional manifests.
+
+### Important sources
+
+As a main source for this deployment I used [Operate First apps repository](https://github.com/operate-first/apps) which similarly uses app-of-apps Kustomize deployment.
