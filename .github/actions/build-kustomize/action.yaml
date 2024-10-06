@@ -3,8 +3,16 @@ name: Run kustomize build on changed paths in the PR
 runs:
   using: "composite"
   steps:
+    - uses: dorny/paths-filter@v2
+      id: changes
+      with:
+        filters: |
+          src:
+            - 'apps/**'
+            - 'cluster-scope/**'
     - name: Build on changed paths
       shell: bash
+      if: steps.changes.outputs.src == 'true'
       run: |
         echo "Check only following shas ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
         DIRS=$(git diff --name-status ${{ github.event.pull_request.base.sha }} ${{ github.event.pull_request.head.sha }} | grep -Po "^[^DR]\s+\K.*?(?=/)|^R\w*\s+.*\s+\K.*?(?=/)" | sort | uniq)
