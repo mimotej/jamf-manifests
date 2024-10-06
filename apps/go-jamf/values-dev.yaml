@@ -2,7 +2,7 @@
 replicaCount: 1
 image:
   repository: mimotej/go-jamf
-  tag: "pr-44-latest"
+  tag: "1.2.0"
 namespace: go-jamf-dev
 nameOverride: ""
 service:
